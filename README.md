@@ -66,3 +66,19 @@ EOF
 ```
 
 ## Alignment using BWA
+### Setup scone file protection (fspf) to secure the input fastq and output sam files
+We utilize the file protection feature provided by Scone to achieve the secured storage of the input and output for the BWA alignment. This document has more information on that:
+https://sconedocs.github.io/SCONE_Fileshield/
+
+Here we assumes we are working on a common directory, say `workdir`, on the shared file system accessible by all nodes in the cluster. Under this working directory we have `data-original` and `volume` to store the unprotected and protected content respectively (The `volume` will be mounted in a running docker process as `data`).
+
+### Job script generatation and submission
+The script bwa_scone_run.py generates the scripts to be submitted to the compute nodes for the BWA alignment work. E.g., run the following in the `workdir` directory on the master/submitting node:
+
+```
+python bwa_scone_run.py 4 bio-sgx0[6-8,10] . split80 0
+```
+
+This will generate 4 separate scripts, in which has the subset of the BWA tasks, and then submit them to the specified 4 nodes. The `split80` shows the directory where the input data can be found.
+
+When changing the last parameter to 1 it runs in dryrun mode to print out the generated scritps location and the command to be sumitted to each compute node.
