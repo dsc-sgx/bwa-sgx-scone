@@ -7,6 +7,7 @@ This document and the scripts describe running BWA with Intel SGX and Scone to a
  - A HPC cluster with SGX-enabled compute nodes.
  - A Shared file system among the cluster nodes.
  - Docker is installed on the compute nodes.
+ - All compute nodes have Internet access to retrieve the bwa_scone docker image from docker hub.
  
 ## Reads data used in the experiments
 
