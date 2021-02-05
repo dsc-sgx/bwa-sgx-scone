@@ -82,6 +82,6 @@ python bwa_scone_run.py 4 bio-sgx0[6-8,10] . split80 0
 
 This will generate 4 separate scripts, in which has the subset of the BWA tasks, and then submit them to the specified 4 nodes. The tasks were partitioned evenly from the parition and disptach step, and here distributed evenly to the specified compute nodes in round-robin fashion.
 
-The `split80` shows the directory where the input data can be found.
+The `split80` specifies the directory where the input data (mref-\*.fa reference and indexing files and the disptached mreads-\*.fastq files) are stored.
 
 When changing the last parameter to 1 it runs in dryrun mode to print out the generated scritps location and the command to be sumitted to each compute node.
