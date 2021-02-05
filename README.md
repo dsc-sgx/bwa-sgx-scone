@@ -45,7 +45,7 @@ head -4000000 SRR062634_2.filt.fastq > SRR062634_1M_2.fastq
 ## Reference split and reads dispatch
 Split the reference genome using the utility python script:
 ```
-$ python splitRef.py 80
+$ python splitref.py 80
 ```
 You can specify the number of chunks to be split. We experimented with various values and found 80 is an optimal value to use to run with SGX.
 
